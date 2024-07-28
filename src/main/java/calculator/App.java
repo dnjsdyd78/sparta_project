@@ -7,10 +7,11 @@ public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String restart;
+        String result;
 
         ArrayList<Integer> numbers = new ArrayList<Integer>();
         int count = 0;
-        String remove = "";
+        String remove;
 
         do {
             //연산자와 피연산자의 값을 입력받는 코드
@@ -49,7 +50,7 @@ public class App {
 
                 case '/':
                     if (num1 == 0 || num2 == 0) {
-                        System.out.println("나눗셈연산은 0을 입력할 수 없습니다");
+                        System.out.println("나눗셈 연산은 0을 입력할 수 없습니다");
                         break;
                     } else {
                         System.out.println("첫 번째 숫자값 : " + num1 + " / " + "두 번째 숫자 값 : " + num2);
@@ -63,6 +64,7 @@ public class App {
                     System.out.println("입력된 기호값이 올바르지 않습니다.");
             }
 
+
             // 입력된 조건에 따라 가장 먼저 저장된 값을 삭제
             System.out.print("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
             remove = sc.next();
@@ -70,10 +72,20 @@ public class App {
                 numbers.remove(0);
             }
 
+            // 입력된 값에 따라 저장된 결과값 출력
+            System.out.print("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+            result = sc.next();
+            if(result.equals("inquiry")){
+                for (int number : numbers) {
+                    System.out.println(number);
+                }
+            }
+
+
             //입력된 조건에 따라 계산추가실행
             System.out.print("더 계산하시겠습니까? (exit 입력 시 종료)");
             restart = sc.next();
-            
+
             // 반복횟수 카운트
             ++count;
             System.out.println("반복횟수:" + count);
